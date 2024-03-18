@@ -6,7 +6,7 @@
 #    By: mzouine <mzouine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 17:10:46 by mzouine           #+#    #+#              #
-#    Updated: 2024/02/23 20:18:30 by mzouine          ###   ########.fr        #
+#    Updated: 2024/02/24 18:00:58 by mzouine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_SERVER_BONUS = server_bonus.c
 HEADER = minitalk.h
 HEADER_BONUS = minitalk_bonus.h
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
 OBJ_SERVER = $(SRC_SERVER:.c=.o)

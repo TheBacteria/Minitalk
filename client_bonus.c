@@ -6,7 +6,7 @@
 /*   By: mzouine <mzouine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:22:53 by mzouine           #+#    #+#             */
-/*   Updated: 2024/02/23 20:17:56 by mzouine          ###   ########.fr       */
+/*   Updated: 2024/02/27 11:30:20 by mzouine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	mz_send_binary(int num, int pid)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(400);
 		i--;
 	}
 }
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 	signal(SIGUSR1, mz_reply);
 	signal(SIGUSR2, mz_reply);
 	if (ac != 3)
-		exit(0);
+		return (write(1, "Syntax error:./client \"pid\" \"message\"\n", 38), 1);
 	pid = mz_pid_conv_bonus(av[1]);
 	i = 0;
 	while (av[2][i])
@@ -56,11 +56,11 @@ int	main(int ac, char **av)
 		i++;
 	}
 	i = 0;
-	while (i < 8)
+	while (i++ < 8)
 	{
 		kill(pid, SIGUSR2);
 		usleep(100);
-		i++;
 	}
-	pause();
+	while (1)
+		pause();
 }
